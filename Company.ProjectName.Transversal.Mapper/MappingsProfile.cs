@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Company.ProjectName.Application.DTO;
 using Company.ProjectName.Domain.Entity;
 
@@ -11,6 +10,7 @@ namespace Company.ProjectName.Transversal.Mapper
         {
             CreateMap<Customers, CustomersDto>().ReverseMap();
             CreateMap<Users, UsersDto>().ReverseMap();
+            CreateMap<Categories, CategoriesDto>().ReverseMap();
 
             //CreateMap<Customers, CustomersDto>().ReverseMap()
             //    .ForMember(destination => destination.CustomerId, source => source.MapFrom(src => src.CustomerId))

@@ -3,6 +3,7 @@ using Company.ProjectName.Services.WebApi.Modules.Feature;
 using Company.ProjectName.Services.WebApi.Modules.HealthCheck;
 using Company.ProjectName.Services.WebApi.Modules.Injection;
 using Company.ProjectName.Services.WebApi.Modules.Mapper;
+using Company.ProjectName.Services.WebApi.Modules.Redis;
 using Company.ProjectName.Services.WebApi.Modules.Swagger;
 using Company.ProjectName.Services.WebApi.Modules.Validator;
 using Company.ProjectName.Services.WebApi.Modules.Versioning;
@@ -28,6 +29,7 @@ builder.Services.AddSwagger();
 builder.Services.AddValidator();
 builder.Services.AddHealthCheck(builder.Configuration);
 builder.Services.AddWatchDog(builder.Configuration);
+builder.Services.AddRedisCache(builder.Configuration);
 
 var app = builder.Build();
 

@@ -10,10 +10,13 @@ namespace Company.ProjectName.Infrastructure.Repository
 
         public IUsersRepository Users { get; }
 
-        public UnitOfWork(ICustomersRepository customers, IUsersRepository users)
+        public ICategoriesRepository Categories { get; }
+
+        public UnitOfWork(ICustomersRepository customers, IUsersRepository users, ICategoriesRepository categories)
         {
             Customers = customers;
             Users = users;
+            Categories = categories;    
         }
         public void Dispose()
         {
