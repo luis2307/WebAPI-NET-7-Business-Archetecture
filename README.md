@@ -22,5 +22,15 @@ This project contains a clean architecture of a web API with .NET 7 following be
 
 > I will continue to add more features in the future and I will continue to update the documentation.
 
+
+## Redis in Docker:
+```
+docker run -d --name redis-stack -e REDIS_ARGS="--requirepass {your hard passwork here}" -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+ ```
+>Open Redis Browser http://localhost:8001/ 
+
+>Username: default
+
+>Password: You have set it up
  
 Cheers!
