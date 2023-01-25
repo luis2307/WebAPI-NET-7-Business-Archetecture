@@ -4,7 +4,7 @@
     {
         public static IServiceCollection AddFeature(this IServiceCollection services, IConfiguration configuration)
         {
-            string myPolicy = "policyApiEcommerce";
+            string myPolicy = "policyApiProjectName";
 
             services.AddCors(options => options.AddPolicy(myPolicy, builder => builder.WithOrigins(configuration["Config:OriginCors"])
                                                                                         .AllowAnyHeader()

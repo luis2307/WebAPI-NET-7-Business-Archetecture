@@ -50,9 +50,11 @@ if (app.Environment.IsDevelopment())
 }
 app.UseWatchDogExceptionLogger();
 app.UseHttpsRedirection();
-app.UseCors("policyApiEcommerce");
+app.UseCors("policyApiProjectName");
+app.UseRouting(); 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseEndpoints(_ => { });
 app.MapControllers();
 app.MapHealthChecksUI();
 app.MapHealthChecks("/health", new HealthCheckOptions
