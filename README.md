@@ -1,4 +1,4 @@
-# WebAPI-NET-7-Business-Archetecture
+# WebAPI-NET-7-Business-Archetecture [![Build Status](https://luisjarpagaete.visualstudio.com/DemosAndTest/_apis/build/status/build-WebAPI-NET-7-Business-Archetecture?branchName=master)](https://luisjarpagaete.visualstudio.com/DemosAndTest/_build/latest?definitionId=21&branchName=master)
 
 
 This project contains a clean architecture of a web API with .NET 7 following best practices such as SOLID, Design Patterns, and decoupling, among others. You can use it in your projects and improve it as you like but don't forget to use tags.  
