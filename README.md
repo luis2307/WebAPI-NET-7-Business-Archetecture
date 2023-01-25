@@ -1,0 +1,1 @@
+# Company.ProjectName_solution
