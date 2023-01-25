@@ -1,4 +1,4 @@
-# WebAPI-NET-7-Business-Archetecture 
+# WebAPI-NET-7-Business-Archetecture [![.NET](https://github.com/luis2307/WebAPI-NET-7-Business-Archetecture/actions/workflows/dotnet.yml/badge.svg)](https://github.com/luis2307/WebAPI-NET-7-Business-Archetecture/actions/workflows/dotnet.yml)
 
 
 This project contains a clean architecture of a web API with .NET 7 following best practices such as SOLID, Design Patterns, and decoupling, among others. You can use it in your projects and improve it as you like but don't forget to use tags.  
