@@ -32,5 +32,23 @@ docker run -d --name redis-stack -e REDIS_ARGS="--requirepass {your hard passwor
 >Username: default
 
 >Password: You have set it up
+
+## Rate limiting:
+
+#### Types of rate limiters
+
+
+* [Concurrency limit](https://devblogs.microsoft.com/dotnet/announcing-rate-limiting-for-dotnet/#concurrency-limit)  is the simplest form of rate limiting. It doesn’t look at time, just at number of concurrent requests. “Allow 10 concurrent requests”.
+
+* [Fixed window limit](https://devblogs.microsoft.com/dotnet/announcing-rate-limiting-for-dotnet/#fixed-window-limit)  lets you apply limits such as “60 requests per minute”. Every minute, 60 requests can be made. One every second, but also 60 in one go.
+
+* [Sliding window limit](https://devblogs.microsoft.com/dotnet/announcing-rate-limiting-for-dotnet/#sliding-window-limit)  is similar to the fixed window limit, but uses segments for more fine-grained limits. Think “60 requests per minute, with 1 request per second”.
+
+* [Token bucket limit](https://devblogs.microsoft.com/dotnet/announcing-rate-limiting-for-dotnet/#token-bucket-limit)  lets you control flow rate, and allows for bursts. Think “you are given 100 requests every minute”. If you make all of them over 10 seconds, you’ll have to wait for 1 minute before you are allowed more requests.
+
+ [Documentation](https://blog.maartenballiauw.be/post/2022/09/26/aspnet-core-rate-limiting-middleware.html)
+
+
+
  
 Cheers!
