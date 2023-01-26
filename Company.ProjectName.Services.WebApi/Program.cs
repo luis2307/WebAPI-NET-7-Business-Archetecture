@@ -3,6 +3,7 @@ using Company.ProjectName.Services.WebApi.Modules.Feature;
 using Company.ProjectName.Services.WebApi.Modules.HealthCheck;
 using Company.ProjectName.Services.WebApi.Modules.Injection;
 using Company.ProjectName.Services.WebApi.Modules.Mapper;
+using Company.ProjectName.Services.WebApi.Modules.RateLimiter;
 using Company.ProjectName.Services.WebApi.Modules.Redis;
 using Company.ProjectName.Services.WebApi.Modules.Swagger;
 using Company.ProjectName.Services.WebApi.Modules.Validator;
@@ -30,6 +31,7 @@ builder.Services.AddValidator();
 builder.Services.AddHealthCheck(builder.Configuration);
 builder.Services.AddWatchDog(builder.Configuration);
 builder.Services.AddRedisCache(builder.Configuration);
+builder.Services.AddRatelimiting(builder.Configuration);
 
 var app = builder.Build();
 
@@ -54,6 +56,7 @@ app.UseCors("policyApiProjectName");
 app.UseRouting(); 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 app.UseEndpoints(_ => { });
 app.MapControllers();
 app.MapHealthChecksUI();
