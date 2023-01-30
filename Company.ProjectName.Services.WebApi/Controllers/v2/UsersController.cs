@@ -29,14 +29,14 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate([FromBody] UsersDto usersDto)
+        public IActionResult Authenticate([FromBody] LoginRequestDto usersDto)
         {
             var response = _usersApplication.Authenticate(usersDto.UserName, usersDto.Password);
             if (response.IsSuccess)
             {
-                if (response.Data != null)
+                if (response.Result != null)
                 {
-                    response.Data.Token = BuildToken(response);
+                    response.Result.Token = BuildToken(response);
                     return Ok(response);
                 }
                 else
@@ -46,6 +46,26 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
             return BadRequest(response);
         }
 
+        [AllowAnonymous]
+        [HttpPost("Register")]
+        public IActionResult Register([FromBody] UserRegisterRequestDto usersDto)
+        {
+            var response = _usersApplication.Register(usersDto);
+            if (response.IsSuccess)
+            {
+                if (response.Result != null)
+                {
+                    response.Result.Token = BuildToken(response);
+                    return Ok(response);
+                }
+                else
+                    return NotFound(response);
+            }
+
+            return BadRequest(response);
+
+
+        }
         private string BuildToken(Response<UsersDto> usersDto)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -54,7 +74,7 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, usersDto.Data.UserId.ToString())
+                    new Claim(ClaimTypes.Name, usersDto.Result.UserId.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),

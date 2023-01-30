@@ -1,4 +1,4 @@
-﻿using Company.ProjectName.Application.Validator;
+﻿using Company.ProjectName.Application.Validator.Users;
 
 namespace Company.ProjectName.Services.WebApi.Modules.Validator
 {
@@ -7,6 +7,8 @@ namespace Company.ProjectName.Services.WebApi.Modules.Validator
         public static IServiceCollection AddValidator(this IServiceCollection services)
         {
             services.AddTransient<UsersDtoValidator>();
+            services.AddTransient<UserRegisterRequestDtoValidator>();
+
             return services;
         }
     }

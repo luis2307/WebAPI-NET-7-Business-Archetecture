@@ -10,6 +10,10 @@ namespace Company.ProjectName.Transversal.Mapper
         {
             CreateMap<Customers, CustomersDto>().ReverseMap();
             CreateMap<Users, UsersDto>().ReverseMap();
+            CreateMap<Users, UserRegisterRequestDto>().ReverseMap();
+
+
+            
             CreateMap<Categories, CategoriesDto>().ReverseMap();
 
             //CreateMap<Customers, CustomersDto>().ReverseMap()

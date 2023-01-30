@@ -1,9 +1,9 @@
 ﻿using Company.ProjectName.Application.DTO;
 using FluentValidation;
 
-namespace Company.ProjectName.Application.Validator
+namespace Company.ProjectName.Application.Validator.Users
 {
-    public class UsersDtoValidator : AbstractValidator<UsersDto>
+    public class UsersDtoValidator : AbstractValidator<LoginRequestDto>
     {
         public UsersDtoValidator()
         {
@@ -11,4 +11,5 @@ namespace Company.ProjectName.Application.Validator
             RuleFor(u => u.Password).NotNull().NotEmpty();
         }
     }
+  
 }

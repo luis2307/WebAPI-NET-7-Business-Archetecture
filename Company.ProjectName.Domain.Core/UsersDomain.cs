@@ -11,9 +11,14 @@ namespace Company.ProjectName.Domain.Core
         {
             _usersRepository = usersRepository;
         }
-        public Users Authenticate(string userName, string password)
-        {
-            return _usersRepository.Authenticate(userName, password);
-        }
+
+        public Users Authenticate(string userName) => _usersRepository.Authenticate(userName);
+
+        public bool Exist(string username) => _usersRepository.Exist(username) > 0;
+
+        public async Task<bool> ExistAsync(string username) => await _usersRepository.ExistAsync(username) > 0;
+
+        public bool Register(Users users) => _usersRepository.Insert(users);
+
     }
 }

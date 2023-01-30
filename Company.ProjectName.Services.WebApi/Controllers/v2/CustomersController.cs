@@ -35,7 +35,7 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
         public IActionResult Update(string customerId, [FromBody] CustomersDto customersDto)
         {
             var customerDto = _customersApplication.Get(customerId);
-            if (customerDto.Data == null)
+            if (customerDto.Result == null)
                 return NotFound(customerDto.Message);
 
             if (customersDto == null)
@@ -110,7 +110,7 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
         public async Task<IActionResult> UpdateAsync(string customerId, [FromBody] CustomersDto customersDto)
         {
             var customerDto = await _customersApplication.GetAsync(customerId);
-            if (customerDto.Data == null)
+            if (customerDto.Result == null)
                 return NotFound(customerDto.Message);
 
             if (customersDto == null)

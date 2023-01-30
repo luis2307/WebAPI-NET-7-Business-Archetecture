@@ -2,6 +2,7 @@
 using Company.ProjectName.Application.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Company.ProjectName.Services.WebApi.Controllers.v1
 {
@@ -27,7 +28,8 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v1
                 return BadRequest();
             var response = _customersApplication.Insert(customersDto);
             if (response.IsSuccess)
-                return Ok(response);
+                response.StatusCode = HttpStatusCode.OK;
+            return Ok(response);
 
             return BadRequest(response.Message);
         }

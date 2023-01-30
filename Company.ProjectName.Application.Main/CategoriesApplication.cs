@@ -6,7 +6,7 @@ using Company.ProjectName.Domain.Interface;
 using Company.ProjectName.Transversal.Common;
 using System.Text.Json;
 using System.Text;
-
+using System.Net;
 
 namespace Company.ProjectName.Application.Main
 {
@@ -33,15 +33,15 @@ namespace Company.ProjectName.Application.Main
                 var redisCategories = await _distributedCache.GetAsync(cacheKey);
                 if (redisCategories != null)
                 {
-                    response.Data = JsonSerializer.Deserialize<IEnumerable<CategoriesDto>>(redisCategories);
+                    response.Result = JsonSerializer.Deserialize<IEnumerable<CategoriesDto>>(redisCategories);
                 }
                 else
                 {
                     var categories = await _categoriesDomain.GetAllAsync();
-                    response.Data = _mapper.Map<IEnumerable<CategoriesDto>>(categories);
-                    if (response.Data != null)
+                    response.Result = _mapper.Map<IEnumerable<CategoriesDto>>(categories);
+                    if (response.Result != null)
                     {
-                        var serializedCategories = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(response.Data));
+                        var serializedCategories = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(response.Result));
                         var options = new DistributedCacheEntryOptions()
                             .SetAbsoluteExpiration(DateTime.Now.AddHours(8))
                             .SetSlidingExpiration(TimeSpan.FromMinutes(60));
@@ -50,15 +50,18 @@ namespace Company.ProjectName.Application.Main
                     }
                 }
 
-                if (response.Data != null)
-                {
+                if (response.Result != null)
+                { 
                     response.IsSuccess = true;
+                    response.StatusCode = HttpStatusCode.OK;
                     response.Message = "Consulta Exitosa!!!";
                 }
 
             }
             catch (Exception e)
             {
+                response.IsSuccess = false;
+                response.StatusCode = HttpStatusCode.BadRequest;
                 response.Message = e.Message;
             }
             return response;
