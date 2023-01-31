@@ -16,7 +16,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         {
             Customers = customers;
             Users = users;
-            Categories = categories;    
+            Categories = categories;
         }
         public void Dispose()
         {

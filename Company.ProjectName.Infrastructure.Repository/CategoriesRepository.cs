@@ -17,7 +17,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         public async Task<IEnumerable<Categories>> GetAllAsync()
         {
             using var connection = _context.CreateConnection();
-            var query = "Select * From Categories"; 
+            var query = "Select * From Categories";
             var categories = await connection.QueryAsync<Categories>(query, commandType: CommandType.Text);
             return categories;
         }

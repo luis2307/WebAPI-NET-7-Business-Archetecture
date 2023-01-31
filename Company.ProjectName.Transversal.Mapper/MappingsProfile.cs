@@ -13,7 +13,7 @@ namespace Company.ProjectName.Transversal.Mapper
             CreateMap<Users, UserRegisterRequestDto>().ReverseMap();
 
 
-            
+
             CreateMap<Categories, CategoriesDto>().ReverseMap();
 
             //CreateMap<Customers, CustomersDto>().ReverseMap()

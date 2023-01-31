@@ -53,7 +53,7 @@ if (app.Environment.IsDevelopment())
 app.UseWatchDogExceptionLogger();
 app.UseHttpsRedirection();
 app.UseCors("policyApiProjectName");
-app.UseRouting(); 
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();

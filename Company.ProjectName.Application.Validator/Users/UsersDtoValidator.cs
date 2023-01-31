@@ -11,5 +11,5 @@ namespace Company.ProjectName.Application.Validator.Users
             RuleFor(u => u.Password).NotNull().NotEmpty();
         }
     }
-  
+
 }

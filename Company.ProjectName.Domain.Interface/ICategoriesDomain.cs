@@ -7,4 +7,4 @@ namespace Company.ProjectName.Domain.Interface
         Task<IEnumerable<Categories>> GetAllAsync();
     }
 }
- 
+

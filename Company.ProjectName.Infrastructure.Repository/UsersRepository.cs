@@ -14,12 +14,12 @@ namespace Company.ProjectName.Infrastructure.Repository
             _context = context;
         }
         #region Métodos Síncronos     
-        public Users Authenticate(string userName )
+        public Users Authenticate(string userName)
         {
             using var connection = _context.CreateConnection();
             var query = "UsersGetByUser";
             var parameters = new DynamicParameters();
-            parameters.Add("UserName", userName); 
+            parameters.Add("UserName", userName);
             var user = connection.QuerySingle<Users>(query, param: parameters, commandType: CommandType.StoredProcedure);
             return user;
         }
@@ -42,12 +42,12 @@ namespace Company.ProjectName.Infrastructure.Repository
         public IEnumerable<Users> GetAll()
         {
             throw new System.NotImplementedException();
-        } 
+        }
 
         public int Count()
         {
             throw new System.NotImplementedException();
-        } 
+        }
 
         public bool Delete(string id)
         {
@@ -80,7 +80,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         #endregion
 
         #region Métodos Asíncronos
-        public async Task<Users> AuthenticateAsync(string userName )
+        public async Task<Users> AuthenticateAsync(string userName)
         {
             using var connection = _context.CreateConnection();
             var query = "UsersGetByUser";

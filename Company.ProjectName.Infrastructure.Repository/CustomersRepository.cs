@@ -84,7 +84,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         public IEnumerable<Customers> GetAll()
         {
             using var connection = _context.CreateConnection();
-            var query = "CustomersList"; 
+            var query = "CustomersList";
             var customers = connection.Query<Customers>(query, commandType: CommandType.StoredProcedure);
             return customers;
         }
@@ -95,7 +95,7 @@ namespace Company.ProjectName.Infrastructure.Repository
             var query = "CustomersListWithPagination";
             var parameters = new DynamicParameters();
             parameters.Add("PageNumber", pageNumber);
-            parameters.Add("PageSize", pageSize); 
+            parameters.Add("PageSize", pageSize);
             var customers = connection.Query<Customers>(query, param: parameters, commandType: CommandType.StoredProcedure);
             return customers;
         }
@@ -103,7 +103,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         public int Count()
         {
             using var connection = _context.CreateConnection();
-            var query = "Select Count(1) from Customers"; 
+            var query = "Select Count(1) from Customers";
             var count = connection.ExecuteScalar<int>(query, commandType: CommandType.Text);
             return count;
         }
@@ -127,7 +127,7 @@ namespace Company.ProjectName.Infrastructure.Repository
             parameters.Add("PostalCode", customers.PostalCode);
             parameters.Add("Country", customers.Country);
             parameters.Add("Phone", customers.Phone);
-            parameters.Add("Fax", customers.Fax);  
+            parameters.Add("Fax", customers.Fax);
             var result = await connection.ExecuteAsync(query, param: parameters, commandType: CommandType.StoredProcedure);
             return result > 0;
         }
@@ -168,7 +168,7 @@ namespace Company.ProjectName.Infrastructure.Repository
             using var connection = _context.CreateConnection();
             var query = "CustomersGetByID";
             var parameters = new DynamicParameters();
-            parameters.Add("CustomerID", customerId); 
+            parameters.Add("CustomerID", customerId);
             var customer = await connection.QuerySingleAsync<Customers>(query, param: parameters, commandType: CommandType.StoredProcedure);
             return customer;
         }
@@ -176,7 +176,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         public async Task<IEnumerable<Customers>> GetAllAsync()
         {
             using var connection = _context.CreateConnection();
-            var query = "CustomersList"; 
+            var query = "CustomersList";
             var customers = await connection.QueryAsync<Customers>(query, commandType: CommandType.StoredProcedure);
             return customers;
         }
@@ -189,7 +189,7 @@ namespace Company.ProjectName.Infrastructure.Repository
             var query = "CustomersListWithPagination";
             var parameters = new DynamicParameters();
             parameters.Add("PageNumber", pageNumber);
-            parameters.Add("PageSize", pageSize); 
+            parameters.Add("PageSize", pageSize);
             var customers = await connection.QueryAsync<Customers>(query, param: parameters, commandType: CommandType.StoredProcedure);
             return customers;
         }
@@ -197,7 +197,7 @@ namespace Company.ProjectName.Infrastructure.Repository
         public async Task<int> CountAsync()
         {
             using var connection = _context.CreateConnection();
-            var query = "Select Count(1) from Customers"; 
+            var query = "Select Count(1) from Customers";
             var count = await connection.ExecuteScalarAsync<int>(query, commandType: CommandType.Text);
             return count;
         }

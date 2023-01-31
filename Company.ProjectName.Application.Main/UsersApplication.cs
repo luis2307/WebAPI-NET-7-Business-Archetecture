@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using BCrypt.Net;
 using Company.ProjectName.Application.DTO;
 using Company.ProjectName.Application.Interface;
 using Company.ProjectName.Application.Validator.Users;
 using Company.ProjectName.Domain.Entity;
 using Company.ProjectName.Domain.Interface;
 using Company.ProjectName.Transversal.Common;
-using FluentValidation;
 using System.Net;
 
 namespace Company.ProjectName.Application.Main
@@ -90,7 +88,7 @@ namespace Company.ProjectName.Application.Main
             {
                 response.Message = e.Message;
                 response.StatusCode = HttpStatusCode.UnprocessableEntity;
-            } 
+            }
             return response;
 
         }

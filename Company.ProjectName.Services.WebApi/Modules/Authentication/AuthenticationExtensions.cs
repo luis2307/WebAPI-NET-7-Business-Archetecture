@@ -30,7 +30,7 @@ namespace Company.ProjectName.Services.WebApi.Modules.Authentication
                 {
                     OnTokenValidated = context =>
                     {
-                        var userId =  context.Principal.Identity.Name ;
+                        var userId = context.Principal.Identity.Name;
                         return Task.CompletedTask;
                     },
 

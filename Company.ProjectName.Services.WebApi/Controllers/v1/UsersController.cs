@@ -1,14 +1,12 @@
 ﻿using Company.ProjectName.Application.DTO;
 using Company.ProjectName.Application.Interface;
-using Company.ProjectName.Application.Main;
 using Company.ProjectName.Services.WebApi.Helpers;
-using Company.ProjectName.Transversal.Common; 
+using Company.ProjectName.Transversal.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens; 
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -56,23 +54,23 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v1
         [AllowAnonymous]
         [HttpPost("Register")]
         public IActionResult Register([FromBody] UserRegisterRequestDto usersDto)
-        { 
-                var response = _usersApplication.Register(usersDto);
-                if (response.IsSuccess)
+        {
+            var response = _usersApplication.Register(usersDto);
+            if (response.IsSuccess)
+            {
+                if (response.Result != null)
                 {
-                    if (response.Result != null)
-                    {
-                        response.Result.Token = BuildToken(response);
-                        return Ok(response);
-                    }
-                    else
-                        return NotFound(response);
+                    response.Result.Token = BuildToken(response);
+                    return Ok(response);
                 }
+                else
+                    return NotFound(response);
+            }
 
-                return BadRequest(response);
+            return BadRequest(response);
 
-             
-        } 
+
+        }
 
         private string BuildToken(Response<UsersDto> usersDto)
         {

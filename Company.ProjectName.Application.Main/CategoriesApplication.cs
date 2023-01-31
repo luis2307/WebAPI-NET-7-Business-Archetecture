@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Microsoft.Extensions.Caching.Distributed;
 using Company.ProjectName.Application.DTO;
 using Company.ProjectName.Application.Interface;
 using Company.ProjectName.Domain.Interface;
 using Company.ProjectName.Transversal.Common;
-using System.Text.Json;
-using System.Text;
+using Microsoft.Extensions.Caching.Distributed;
 using System.Net;
+using System.Text;
+using System.Text.Json;
 
 namespace Company.ProjectName.Application.Main
 {
@@ -51,7 +51,7 @@ namespace Company.ProjectName.Application.Main
                 }
 
                 if (response.Result != null)
-                { 
+                {
                     response.IsSuccess = true;
                     response.StatusCode = HttpStatusCode.OK;
                     response.Message = "Consulta Exitosa!!!";

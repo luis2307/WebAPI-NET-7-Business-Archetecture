@@ -30,14 +30,14 @@ namespace Company.ProjectName.Application.Main
             var response = new Response<bool>();
             try
             {
-             
+
                 var customer = _mapper.Map<Customers>(customersDto);
                 response.Result = _customersDomain.Insert(customer);
                 if (response.Result)
                 {
                     response.IsSuccess = true;
                     response.StatusCode = HttpStatusCode.OK;
-                    response.Message = "Registro Exitoso!!!"; 
+                    response.Message = "Registro Exitoso!!!";
                 }
             }
             catch (Exception e)
@@ -181,7 +181,7 @@ namespace Company.ProjectName.Application.Main
             try
             {
                 var customer = _mapper.Map<Customers>(customersDto);
-                response.Result  = await _customersDomain.InsertAsync(customer);
+                response.Result = await _customersDomain.InsertAsync(customer);
                 if (response.Result)
                 {
                     response.IsSuccess = true;
@@ -224,7 +224,7 @@ namespace Company.ProjectName.Application.Main
         {
             var response = new Response<bool>();
             try
-            { 
+            {
                 response.StatusCode = HttpStatusCode.BadRequest;
                 response.Result = await _customersDomain.DeleteAsync(customerId);
                 if (response.Result)

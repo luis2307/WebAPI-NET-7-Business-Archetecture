@@ -7,7 +7,8 @@ namespace Company.ProjectName.Services.WebApi.Modules.RateLimiter
         public static IServiceCollection AddRatelimiting(this IServiceCollection services, IConfiguration configuration)
         {
             var fixedWindowPolicy = "fixedWindow";
-            services.AddRateLimiter(configureOptions => {
+            services.AddRateLimiter(configureOptions =>
+            {
                 configureOptions.AddFixedWindowLimiter(policyName: fixedWindowPolicy, fixedWindow =>
                 {
                     fixedWindow.PermitLimit = int.Parse(configuration["RateLimiting:PermitLimit"]);

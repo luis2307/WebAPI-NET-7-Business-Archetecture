@@ -29,6 +29,8 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Response<UsersDto>))]
+
         public IActionResult Authenticate([FromBody] LoginRequestDto usersDto)
         {
             var response = _usersApplication.Authenticate(usersDto.UserName, usersDto.Password);
@@ -48,6 +50,8 @@ namespace Company.ProjectName.Services.WebApi.Controllers.v2
 
         [AllowAnonymous]
         [HttpPost("Register")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Response<UsersDto>))]
+
         public IActionResult Register([FromBody] UserRegisterRequestDto usersDto)
         {
             var response = _usersApplication.Register(usersDto);
