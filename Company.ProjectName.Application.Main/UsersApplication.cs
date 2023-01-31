@@ -69,16 +69,37 @@ namespace Company.ProjectName.Application.Main
             }
             return response;
         }
+        public Response<bool> ExistUserName(string username)
+        {
+            var response = new Response<bool>();
+            var userExist = _usersDomain.Exist(username);
+            try
+            {
+                response.IsSuccess = true;
+                response.Message = userExist ? "Usuario ya existe!" : "Usuario no Existe";
+                response.StatusCode = userExist ? HttpStatusCode.OK : HttpStatusCode.BadRequest;
+                response.Result = userExist;
+            }
+            catch (InvalidOperationException)
+            {
+                response.IsSuccess = false;
+                response.Message = "Error al registrar, re intente más tarde";
+                response.StatusCode = HttpStatusCode.BadRequest;
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.StatusCode = HttpStatusCode.UnprocessableEntity;
+            } 
+            return response;
 
+        }
         public Response<UsersDto> Register(UserRegisterRequestDto usersDto)
         {
             var resp = new UsersDto();
             var response = new Response<UsersDto>();
 
-            var validation = _userRegisterDtoValidator.Validate(
-
-            usersDto
-            );
+            var validation = _userRegisterDtoValidator.Validate(usersDto);
 
 
             if (!validation.IsValid)

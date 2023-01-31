@@ -7,5 +7,6 @@ namespace Company.ProjectName.Application.Interface
     {
         Response<UsersDto> Authenticate(string username, string password); 
         Response<UsersDto> Register(UserRegisterRequestDto users);
+        Response<bool> ExistUserName(string username);
     }
 }
